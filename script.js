@@ -2,6 +2,38 @@ const Profile = require("./modules/profile")
 const inquirer = require("inquirer")
 const fs = require("fs")
 
+inquirer.prompt([
+    {
+    name: "job",
+    message: "What job role is this member?",
+    type: "input",
+    choices: ["Manager","Engineer", "Intern"]  
+    },
+    {
+    name: "name",
+    message: "Name:",
+    type: "input",
+    },
+    {
+    name:"email",
+    message: "Email:",
+    type: "input",
+    },
+    {
+    name: "github",
+    message: "Github:",
+    type: "input",
+    }
+]
+)
+
+const memberDescriptions = [
+    this.name = "Name",
+    this.job = "Job",
+    this.email = "Email Address",
+    this.github = "GitHub Address"
+];
+
 
 // GIVEN a command-line application that accepts user input
 // WHEN I am prompted for my team members and their information

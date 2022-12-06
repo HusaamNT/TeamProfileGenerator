@@ -4,10 +4,11 @@ class Engineer extends Profile{
     constructor(name, email, github){
         super(name, email);
         this.github = github;
+        this.role = "e"
     }
-    sayHi(){
-        return `Hi, I am an engineer named ${this.name}!`
-    }
+
 }
+
+
 
 module.exports = Engineer

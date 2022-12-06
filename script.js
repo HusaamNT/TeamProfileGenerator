@@ -3,6 +3,7 @@ const fs = require("fs")
 const Engineer = require("./modules/engineer")
 const Intern = require("./modules/intern")
 const Manager = require ("./modules/manager")
+const { type } = require("os")
 
 let htmlContent = (`<html lang="en">
 <head>
@@ -33,7 +34,7 @@ const managerInq = function(){
         }
     ]).then((response) =>{
     return new Manager(response.managerName, response.managerEmail, response.managerOfficeNo)
-    })
+    })  
     }
 const engineerInq = function(){
     inquirer.prompt([
@@ -104,9 +105,25 @@ if (response.jobType === "manager"){
 }
 })
 }
+
 mainFunction()
-
-
+const repeatFunction = function(){
+inquirer.prompt([
+    {
+        name: "additionalMem",
+        message: "Add another member?",
+        type: "list",
+        list: ["Yes", "No"],
+    }
+    .then((response) =>{
+        if (response.additionalMem === "yes"){
+            mainFunction()
+        }else{
+            return
+        }
+    }
+])
+}
 // const memberDescriptions = [
 //     this.name = "Name",
 //     this.job = "Job",

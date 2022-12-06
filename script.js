@@ -68,7 +68,16 @@ const team = [
 for(i=0; i<team.length; i++){
     if(team[i].role === "e"){
         console.log("hello Engineer")
-        console.log(team[i])
+        job.push(`<div class="member" id='member${team[i].id}'>
+        <ul>
+        <li>Name:${team[i].name}</li>
+        <li>Role:Engineer</li>
+        <li>ID:${team[i].id} </li>
+        <li>Email:${team[i].email}</li>
+        <li>GitHub:${team[i].github} </li>
+        </ul>
+        </div>
+        `)
     }else if(team[i].role === "m"){
         console.log("hello Manager!!!")
         console.log(team[i])
@@ -78,5 +87,6 @@ for(i=0; i<team.length; i++){
     } else return
 }
 
+console.log(job)
 
 

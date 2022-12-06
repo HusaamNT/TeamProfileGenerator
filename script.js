@@ -55,8 +55,6 @@ const job = [];
 // const person2 = new Engineer("husaam", "husaam@email.com", "husaam@github.com")
 // console.log(person2.sayHi())
 
-cardArray = []
-
 const team = [
     new Manager("Hamzah", "hamzah@gmail.com", "#1320"),
     new Engineer("Ben", "benjamin@gmail.com", "benj@github.com"),
@@ -115,7 +113,7 @@ job.push(`</div>
 const arrayCards = JSON.stringify(job)
 console.log(arrayCards)
 console.log(typeof arrayCards)
-console.log(typeof htmlContent)
+console.log(typeof ht)
 const finalContent = htmlContent.push.arrayCards
 
 console.log(finalContent)

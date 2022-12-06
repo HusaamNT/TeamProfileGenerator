@@ -14,7 +14,6 @@ const htmlContent = (`<html lang="en">
 </head>
 <body>`)
 
-fs.writeFile('./public/index.html', htmlContent, (err) =>  err ? console.error(err) : console.log('Commit logged!'))
 
 //fs.writeFile('/index.html', htmlContent, (error) =>  err ? console.error(err) : console.log('Commit logged!'))
 
@@ -113,8 +112,15 @@ job.push(`</div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
 `
 )
-console.log(job)
-// fs.writeFile('./public/index.html', job, (error) =>  err ? console.error(err) : console.log('Commit logged!'))
+const arrayCards = JSON.stringify(job)
+console.log(arrayCards)
+console.log(typeof arrayCards)
+console.log(typeof htmlContent)
+const finalContent = htmlContent.push.arrayCards
+
+console.log(finalContent)
+
+//fs.writeFile('./public/index.html', htmlContent, (err) =>  err ? console.error(err) : console.log('Commit logged!'))
 
 
 

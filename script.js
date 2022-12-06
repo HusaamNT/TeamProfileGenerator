@@ -1,31 +1,33 @@
-const Profile = require("./modules/profile")
 const inquirer = require("inquirer")
 const fs = require("fs")
+const Engineer = require("./modules/engineer")
+const Intern = require("./modules/intern")
+const Manager = require ("./modules/manager")
 
-inquirer.prompt([
-    {
-    name: "job",
-    message: "What job role is this member?",
-    type: "input",
-    choices: ["Manager","Engineer", "Intern"]  
-    },
-    {
-    name: "name",
-    message: "Name:",
-    type: "input",
-    },
-    {
-    name:"email",
-    message: "Email:",
-    type: "input",
-    },
-    {
-    name: "github",
-    message: "Github:",
-    type: "input",
-    }
-]
-)
+// inquirer.prompt([
+//     {
+//     name: "job",
+//     message: "What job role is this member?",
+//     type: "input",
+//     choices: ["Manager","Engineer", "Intern"]  
+//     },
+//     {
+//     name: "name",
+//     message: "Name:",
+//     type: "input",
+//     },
+//     {
+//     name:"email",
+//     message: "Email:",
+//     type: "input",
+//     },
+//     {
+//     name: "github",
+//     message: "Github:",
+//     type: "input",
+//     }
+// ]
+// )
 
 const memberDescriptions = [
     this.name = "Name",
@@ -52,3 +54,9 @@ const memberDescriptions = [
 // THEN I am prompted to enter the intern’s name, ID, email, and school, and I am taken back to the menu
 // WHEN I decide to finish building my team
 // THEN I exit the application, and the HTML is generated
+
+const person1 = new Intern("john", "john@email.com")
+console.log(person1.sayHi())
+const person2 = new Engineer("husaam", "husaam@email.com", "husaam@github.com")
+console.log(person2.sayHi())
+

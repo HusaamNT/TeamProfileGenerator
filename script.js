@@ -6,27 +6,27 @@ const Manager = require ("./modules/manager")
 
 const job = [];
 
-const mainFunction = function(){
-    console.log("hello");
-    inquirer.prompt([
-    {
-    name: "jobType",
-    message: "What job role is this member?",
-    type: "list",
-    choices: ["manager", "engineer", "intern"]  
-    }
+// const mainFunction = function(){
+//     console.log("hello");
+//     inquirer.prompt([
+//     {
+//     name: "jobType",
+//     message: "What job role is this member?",
+//     type: "list",
+//     choices: ["manager", "engineer", "intern"]  
+//     }
 
-]).then((response) =>{
-if (response.jobtype === "manager"){
-    console.log("hi");
-}else if (response.jobtype === "engineer"){
-    console.log("hello");
-}else {
-    return
-}
-})
-}
-mainFunction()
+// ]).then((response) =>{
+// if (response.jobtype === "manager"){
+//     console.log("hi");
+// }else if (response.jobtype === "engineer"){
+//     console.log("hello");
+// }else {
+//     return
+// }
+// })
+// }
+// mainFunction()
 
 
 
@@ -61,4 +61,11 @@ mainFunction()
 // const person2 = new Engineer("husaam", "husaam@email.com", "husaam@github.com")
 // console.log(person2.sayHi())
 
-// fs.writeFile('/my-page.html', htmlContent, (error) => { /* handle error */ });
+
+
+const person1 = new Manager("Hamzah", "hamzah@gmail.com", "#1320")
+const person2 = new Engineer("Ben", "benjamin@gmail.com", "benj@github.com")
+const person3 = new Engineer("Sami", "sami1997@hotmail.com", "sami1997@github.com")
+const person4 = new Intern("Sarah", "saraht@gmail.com", "Aston University")
+
+fs.writeFile('/my-page.html', htmlContent, (error) => { /* handle error */ });

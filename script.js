@@ -31,8 +31,10 @@ const managerInq = function(){
             message: "Office Number:",
             type: "input",
         }
-    ])
-}
+    ]).then((response) =>{
+    return new Manager(response.managerName, response.managerEmail, response.managerOfficeNo)
+    })
+    }
 const engineerInq = function(){
     inquirer.prompt([
         {
@@ -50,8 +52,11 @@ const engineerInq = function(){
             message: "GitHub:",
             type: "input",
         }
-    ])
-}
+    ]
+    ).then((response) =>{
+    return new Engineer(response.engineerName, response.engineerEmail, response.engineerGitHub)})
+    }
+
 const internInq = function(){
     inquirer.prompt([
         {
@@ -70,6 +75,9 @@ const internInq = function(){
             type: "input",
         }
     ])
+    .then((response) =>{
+        return new Intern(response.internName, response.internEmail, response.internSchool)
+    })
 }
 //fs.writeFile('/index.html', htmlContent, (error) =>  err ? console.error(err) : console.log('Commit logged!'))
 
@@ -84,19 +92,19 @@ const mainFunction = function(){
     type: "list",
     choices: ["manager", "engineer", "intern"]  
     }
-
 ]).then((response) =>{
 if (response.jobType === "manager"){
-   
+    managerInq();
 }else if (response.jobType === "engineer"){
-    console.log("hello");
-}else {
+    engineerInq();
+}else if (response.jobType === "intern"){
+    internInq();
+}else{
     return
 }
 })
 }
 mainFunction()
-
 
 
 // const memberDescriptions = [
@@ -117,6 +125,10 @@ const team = [
     new Engineer("Sami", "sami1997@hotmail.com", "sami1997@github.com"),
     new Intern("Sarah", "saraht@gmail.com", "Aston University")
 ]
+
+for (const member of team) {
+
+}
 
 for(i=0; i<team.length; i++){
     if(team[i].role === "m"){

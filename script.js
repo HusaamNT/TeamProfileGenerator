@@ -114,7 +114,7 @@ inquirer.prompt([
         message: "Add another member?",
         type: "list",
         list: ["Yes", "No"],
-    }
+    }]
     .then((response) =>{
         if (response.additionalMem === "yes"){
             mainFunction()
@@ -122,7 +122,7 @@ inquirer.prompt([
             return
         }
     }
-])
+))
 }
 // const memberDescriptions = [
 //     this.name = "Name",

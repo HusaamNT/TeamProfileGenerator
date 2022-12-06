@@ -4,37 +4,29 @@ const Engineer = require("./modules/engineer")
 const Intern = require("./modules/intern")
 const Manager = require ("./modules/manager")
 
-// inquirer.prompt([
-//     {
-//     name: "job",
-//     message: "What job role is this member?",
-//     type: "input",
-//     choices: ["Manager","Engineer", "Intern"]  
-//     },
-//     {
-//     name: "name",
-//     message: "Name:",
-//     type: "input",
-//     },
-//     {
-//     name:"email",
-//     message: "Email:",
-//     type: "input",
-//     },
-//     {
-//     name: "github",
-//     message: "Github:",
-//     type: "input",
-//     }
-// ]
-// )
+const mainFunction = function(){
+    console.log("hello");
+    inquirer.prompt([
+    {
+    name: "jobType",
+    message: "What job role is this member?",
+    type: "list",
+    choices: ["Manager", "Engineer", "Intern"]  
+    }
 
-const memberDescriptions = [
-    this.name = "Name",
-    this.job = "Job",
-    this.email = "Email Address",
-    this.github = "GitHub Address"
-];
+]).then((response) =>
+console.log(response.jobType))
+}
+mainFunction()
+
+
+
+// const memberDescriptions = [
+//     this.name = "Name",
+//     this.job = "Job",
+//     this.email = "Email Address",
+//     this.github = "GitHub Address"
+// ];
 
 
 // GIVEN a command-line application that accepts user input
@@ -55,8 +47,9 @@ const memberDescriptions = [
 // WHEN I decide to finish building my team
 // THEN I exit the application, and the HTML is generated
 
-const person1 = new Intern("john", "john@email.com")
-console.log(person1.sayHi())
-const person2 = new Engineer("husaam", "husaam@email.com", "husaam@github.com")
-console.log(person2.sayHi())
+// const person1 = new Intern("john", "john@email.com")
+// console.log(person1)
+// const person2 = new Engineer("husaam", "husaam@email.com", "husaam@github.com")
+// console.log(person2.sayHi())
 
+// fs.writeFile('/my-page.html', htmlContent, (error) => { /* handle error */ });

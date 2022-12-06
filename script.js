@@ -14,7 +14,7 @@ const htmlContent = (`<html lang="en">
 </head>
 <body>`)
 
-fs.writeFile('./public/index.html', htmlContent, (error) =>  err ? console.error(err) : console.log('Commit logged!'))
+fs.writeFile('./public/index.html', htmlContent, (err) =>  err ? console.error(err) : console.log('Commit logged!'))
 
 //fs.writeFile('/index.html', htmlContent, (error) =>  err ? console.error(err) : console.log('Commit logged!'))
 
@@ -66,7 +66,19 @@ const team = [
 ]
 
 for(i=0; i<team.length; i++){
-    if(team[i].role === "e"){
+    if(team[i].role === "m"){
+        console.log("hello Manager!!!")
+        job.push(`<div class="member" id='member${team[i].id}'>
+        <ul>
+        <li>Name:${team[i].name}</li>
+        <li>Role:Manager</li>
+        <li>ID:${team[i].id} </li>
+        <li>Email:${team[i].email}</li>
+        <li>OfficeNumber:${team[i].officeNo} </li>
+        </ul>
+        </div>
+        `)
+    }else if(team[i].role === "e"){
         console.log("hello Engineer")
         job.push(`<div class="member" id='member${team[i].id}'>
         <ul>
@@ -78,15 +90,33 @@ for(i=0; i<team.length; i++){
         </ul>
         </div>
         `)
-    }else if(team[i].role === "m"){
-        console.log("hello Manager!!!")
-        console.log(team[i])
     }else if (team[i].role === "i"){
         console.log("hello Intern!!!")
-        console.log(team[i])
+        job.push(`<div class="member" id='member${team[i].id}'>
+        <ul>
+        <li>Name:${team[i].name}</li>
+        <li>Role:Intern</li>
+        <li>ID:${team[i].id} </li>
+        <li>Email:${team[i].email}</li>
+        <li>School:${team[i].school} </li>
+        </ul>
+        </div>
+        `)
     } else return
 }
-
 console.log(job)
+
+// job.push(`</div>
+// </main>
+// </body>
+// </html>
+// <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+// <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
+// `
+// )
+
+// fs.writeFile('./public/index.html', job, (error) =>  err ? console.error(err) : console.log('Commit logged!'))
+
+
 
 

@@ -4,6 +4,8 @@ const Engineer = require("./modules/engineer")
 const Intern = require("./modules/intern")
 const Manager = require ("./modules/manager")
 
+const job = [];
+
 const mainFunction = function(){
     console.log("hello");
     inquirer.prompt([
@@ -11,11 +13,18 @@ const mainFunction = function(){
     name: "jobType",
     message: "What job role is this member?",
     type: "list",
-    choices: ["Manager", "Engineer", "Intern"]  
+    choices: ["manager", "engineer", "intern"]  
     }
 
-]).then((response) =>
-console.log(response.jobType))
+]).then((response) =>{
+if (response.jobtype === "manager"){
+    console.log("hi");
+}else if (response.jobtype === "engineer"){
+    console.log("hello");
+}else {
+    return
+}
+})
 }
 mainFunction()
 

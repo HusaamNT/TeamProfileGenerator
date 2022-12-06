@@ -4,7 +4,7 @@ const Engineer = require("./modules/engineer")
 const Intern = require("./modules/intern")
 const Manager = require ("./modules/manager")
 
-const htmlContent = (`<html lang="en">
+let htmlContent = (`<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,32 +14,88 @@ const htmlContent = (`<html lang="en">
 </head>
 <body>`)
 
-
+const managerInq = function(){
+    inquirer.prompt([
+        {
+            name: "managerName",
+            message: "Name:",
+            type: "input",
+        },
+        {
+            name: "managerEmail",
+            message: "Email:",
+            type: "input",
+        },
+        {
+            name: "managerOfficeNo",
+            message: "Office Number:",
+            type: "input",
+        }
+    ])
+}
+const engineerInq = function(){
+    inquirer.prompt([
+        {
+            name: "engineerName",
+            message: "Name:",
+            type: "input",
+        },
+        {
+            name: "engineerEmail",
+            message: "Email:",
+            type: "input",
+        },
+        {
+            name: "engineerGitHub",
+            message: "GitHub:",
+            type: "input",
+        }
+    ])
+}
+const internInq = function(){
+    inquirer.prompt([
+        {
+            name: "internName",
+            message: "Name:",
+            type: "input",
+        },
+        {
+            name: "internEmail",
+            message: "Email:",
+            type: "input",
+        },
+        {
+            name: "internSchool",
+            message: "School:",
+            type: "input",
+        }
+    ])
+}
 //fs.writeFile('/index.html', htmlContent, (error) =>  err ? console.error(err) : console.log('Commit logged!'))
 
 const job = [];
 
-// const mainFunction = function(){
-//     console.log("hello");
-//     inquirer.prompt([
-//     {
-//     name: "jobType",
-//     message: "What job role is this member?",
-//     type: "list",
-//     choices: ["manager", "engineer", "intern"]  
-//     }
+const mainFunction = function(){
+    console.log("hello");
+    inquirer.prompt([
+    {
+    name: "jobType",
+    message: "What job role is this member?",
+    type: "list",
+    choices: ["manager", "engineer", "intern"]  
+    }
 
-// ]).then((response) =>{
-// if (response.jobtype === "manager"){
-//     console.log("hi");
-// }else if (response.jobtype === "engineer"){
-//     console.log("hello");
-// }else {
-//     return
-// }
-// })
-// }
-// mainFunction()
+]).then((response) =>{
+if (response.jobType === "manager"){
+   
+}else if (response.jobType === "engineer"){
+    console.log("hello");
+}else {
+    return
+}
+})
+}
+mainFunction()
 
 
 
@@ -65,7 +121,7 @@ const team = [
 for(i=0; i<team.length; i++){
     if(team[i].role === "m"){
         console.log("hello Manager!!!")
-        job.push(`<div class="member" id='member${team[i].id}'>
+        htmlContent += `<div class="member" id='member${team[i].id}'>
         <ul>
         <li>Name:${team[i].name}</li>
         <li>Role:Manager</li>
@@ -74,10 +130,10 @@ for(i=0; i<team.length; i++){
         <li>OfficeNumber:${team[i].officeNo} </li>
         </ul>
         </div>
-        `)
+        `
     }else if(team[i].role === "e"){
         console.log("hello Engineer")
-        job.push(`<div class="member" id='member${team[i].id}'>
+        htmlContent += `<div class="member" id='member${team[i].id}'>
         <ul>
         <li>Name:${team[i].name}</li>
         <li>Role:Engineer</li>
@@ -86,10 +142,10 @@ for(i=0; i<team.length; i++){
         <li>GitHub:${team[i].github} </li>
         </ul>
         </div>
-        `)
+        `
     }else if (team[i].role === "i"){
         console.log("hello Intern!!!")
-        job.push(`<div class="member" id='member${team[i].id}'>
+        htmlContent += `<div class="member" id='member${team[i].id}'>
         <ul>
         <li>Name:${team[i].name}</li>
         <li>Role:Intern</li>
@@ -98,27 +154,19 @@ for(i=0; i<team.length; i++){
         <li>School:${team[i].school} </li>
         </ul>
         </div>
-        `)
+        `
     } else return
 }
 
-job.push(`</div>
+htmlContent += `</div>
 </main>
 </body>
 </html>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
 `
-)
-const arrayCards = JSON.stringify(job)
-console.log(arrayCards)
-console.log(typeof arrayCards)
-console.log(typeof ht)
-const finalContent = htmlContent.push.arrayCards
 
-console.log(finalContent)
-
-//fs.writeFile('./public/index.html', htmlContent, (err) =>  err ? console.error(err) : console.log('Commit logged!'))
+fs.writeFile('./public/index.html', htmlContent, (err) =>  err ? console.error(err) : console.log('Commit logged!'))
 
 
 

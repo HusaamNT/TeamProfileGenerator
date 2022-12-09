@@ -83,6 +83,23 @@ const internInq = function(){
 //fs.writeFile('/index.html', htmlContent, (error) =>  err ? console.error(err) : console.log('Commit logged!'))
 
 const job = [];
+const repeatFunction = function(){
+    inquirer.prompt([
+        {
+            name: "additionalMem",
+            message: "Add another member?",
+            type: "list",
+            list: ["Yes", "No"],
+        }]
+        .then((response) =>{
+            if (response.additionalMem === "yes"){
+                mainFunction()
+            }else{
+                return
+            }
+        }
+    ))
+    }
 
 const mainFunction = function(){
     console.log("hello");
@@ -103,27 +120,12 @@ if (response.jobType === "manager"){
 }else{
     return
 }
+repeatFunction()
 })
 }
 
 mainFunction()
-const repeatFunction = function(){
-inquirer.prompt([
-    {
-        name: "additionalMem",
-        message: "Add another member?",
-        type: "list",
-        list: ["Yes", "No"],
-    }]
-    .then((response) =>{
-        if (response.additionalMem === "yes"){
-            mainFunction()
-        }else{
-            return
-        }
-    }
-))
-}
+
 // const memberDescriptions = [
 //     this.name = "Name",
 //     this.job = "Job",

@@ -35,6 +35,7 @@ const managerInq = async function () {
     },
   ]);
   console.log(inputs);
+  repeatFunction();
 };
 
 const engineerInq = async function () {
@@ -56,6 +57,7 @@ const engineerInq = async function () {
     },
   ]);
   console.log(inputs);
+  repeatFunction();
 };
 
 const internInq = async function () {
@@ -77,35 +79,11 @@ const internInq = async function () {
     },
   ]);
   console.log(inputs);
+  repeatFunction();
 };
 //fs.writeFile('/index.html', htmlContent, (error) =>  err ? console.error(err) : console.log('Commit logged!'))
 
-const mainFunction = async function () {
-  console.log("hello mainF");
-  const response = await inquirer.prompt([
-    {
-      name: "jobType",
-      message: "What job role is this member?",
-      type: "list",
-      choices: ["manager", "engineer", "intern"],
-    },
-  ]);
-  console.log(response);
-  console.log(response.jobType)
 
-  if (response.jobType === "manager") {
-    await managerInq();
-  } else if (response.jobType === "engineer") {
-    await engineerInq();
-  } else if (response.jobType === "intern") {
-    await internInq();
-  } else {
-    return;
-  }
-    repeatFunction();
-};
-
-mainFunction();
 
 // const memberDescriptions = [
 //     this.name = "Name",
@@ -131,7 +109,7 @@ for (const member of team) {
 
 for (i = 0; i < team.length; i++) {
   if (team[i].role === "m") {
-    console.log("hello Manager!!!");
+    //console.log("hello Manager!!!");
     htmlContent += `<div class="member" id='member${team[i].id}'>
         <ul>
         <li>Name:${team[i].name}</li>
@@ -143,7 +121,7 @@ for (i = 0; i < team.length; i++) {
         </div>
         `;
   } else if (team[i].role === "e") {
-    console.log("hello Engineer");
+   // console.log("hello Engineer");
     htmlContent += `<div class="member" id='member${team[i].id}'>
         <ul>
         <li>Name:${team[i].name}</li>
@@ -155,7 +133,7 @@ for (i = 0; i < team.length; i++) {
         </div>
         `;
   } else if (team[i].role === "i") {
-    console.log("hello Intern!!!");
+   // console.log("hello Intern!!!");
     htmlContent += `<div class="member" id='member${team[i].id}'>
         <ul>
         <li>Name:${team[i].name}</li>
@@ -183,17 +161,30 @@ htmlPrint = () => {
   );
 };
 
-const repeatFunction = async function () {
-  const repeat = await inquirer.prompt({
-    name: "additionalMem",
-    message: "Add another member?",
-    type: "list",
-    list: ["Yes", "No"],
-  });
-  console.log(repeat);
-  if (repeat === "Yes") {
-    mainFunction();
-  } else {
-    htmlPrint();
-  }
+const mainFunction = async function () {
+    //console.log("hello mainF");
+    const response = await inquirer.prompt([
+      {
+        name: "jobType",
+        message: "What job role is this member?",
+        type: "list",
+        choices: ["manager", "engineer", "intern"],
+      },
+    ]);
+    console.log(response);
+    console.log(response.jobType)
+  
+    if (response.jobType === "manager") {
+      await managerInq();
+    } else if (response.jobType === "engineer") {
+      await engineerInq();
+    } else if (response.jobType === "intern") {
+      await internInq();
+    } else {
+      return;
+    }
 };
+  
+mainFunction();
+
+

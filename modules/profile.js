@@ -5,9 +5,9 @@ class Profile {
     this.id = nextId++;
     this.email = email;
 }
-    sayHi(){
-        return `Hi, my name is ${this.name}`
-    }
+    //sayHi(){
+   //     return `Hi, my name is ${this.name}`
+    //}
 }
 
 module.exports = Profile;

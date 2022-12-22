@@ -36,8 +36,9 @@ const managerInq = async function () {
       type: "input",
     },
   ]);
+  inputs.role = "m"
   profileData.push(inputs)
-  console.log(profileData);
+  //console.log(profileData);
   repeatFunction(profileData);
 };
 
@@ -59,8 +60,9 @@ const engineerInq = async function () {
       type: "input",
     },
   ]);
+  inputs.role = "e"
   profileData.push(inputs)
-  console.log(profileData);
+  //console.log(profileData);
   repeatFunction(profileData);
 };
 
@@ -82,8 +84,9 @@ const internInq = async function () {
       type: "input",
     },
   ]);
+  inputs.role = "i"
   profileData.push(inputs)
-  console.log(profileData);
+  //console.log(profileData);
   repeatFunction(profileData);
 };
 //fs.writeFile('/index.html', htmlContent, (error) =>  err ? console.error(err) : console.log('Commit logged!'))
@@ -102,17 +105,18 @@ const internInq = async function () {
 // const person2 = new Engineer("husaam", "husaam@email.com", "husaam@github.com")
 // console.log(person2.sayHi())
 
-const team = [
-  new Manager("Hamzah", "hamzah@gmail.com", "#1320"),
-  new Engineer("Ben", "benjamin@gmail.com", "benj@github.com"),
-  new Engineer("Sami", "sami1997@hotmail.com", "sami1997@github.com"),
-  new Intern("Sarah", "saraht@gmail.com", "Aston University"),
-];
+// const team = [
+//   new Manager("Hamzah", "hamzah@gmail.com", "#1320"),
+//   new Engineer("Ben", "benjamin@gmail.com", "benj@github.com"),
+//   new Engineer("Sami", "sami1997@hotmail.com", "sami1997@github.com"),
+//   new Intern("Sarah", "saraht@gmail.com", "Aston University"),
+// ];
 
-for (const member of team) {
-}
+// for (const member of team) {
+// }
 
-for (i = 0; i < team.length; i++) {
+appendProfiles = (profileData) =>{
+for (i = 0; i < profileData.length; i++) {
   if (team[i].role === "m") {
     //console.log("hello Manager!!!");
     htmlContent += `<div class="member" id='member${team[i].id}'>
@@ -151,6 +155,7 @@ for (i = 0; i < team.length; i++) {
         `;
   } else return;
 }
+};
 
 htmlContent += `</div>
 </main>

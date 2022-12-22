@@ -156,6 +156,13 @@ for (i = 0; i < profileData.length; i++) {
         `;
   } else return;
 }
+htmlContent += `</div>
+</main>
+</body>
+</html>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
+`;
 console.log(htmlContent)
 };
 
@@ -185,14 +192,7 @@ const mainFunction = async function () {
   
 mainFunction();
 
-const endBoiler = (htmlContent) => {htmlContent += `</div>
-</main>
-</body>
-</html>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
-`;
-}
+
 const repeatFunction = async function (profileData) {
   const repeat = await inquirer.prompt({
     name: "additionalMem",
@@ -207,9 +207,7 @@ const repeatFunction = async function (profileData) {
     console.log("This is the end of the app!")
     console.log(profileData)
     appendProfiles(profileData)
-    endBoiler()
-
-    //htmlPrint();
+    htmlPrint();
   }
 };
 

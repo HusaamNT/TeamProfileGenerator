@@ -16,6 +16,8 @@ let htmlContent = `<html lang="en">
 <body>
 <h1>Team Profile</h1>`;
 
+const profileData = []
+
 const managerInq = async function () {
   const inputs = await inquirer.prompt([
     {
@@ -34,8 +36,9 @@ const managerInq = async function () {
       type: "input",
     },
   ]);
-  console.log(inputs);
-  repeatFunction();
+  profileData.push(inputs)
+  console.log(profileData);
+  repeatFunction(profileData);
 };
 
 const engineerInq = async function () {
@@ -56,8 +59,9 @@ const engineerInq = async function () {
       type: "input",
     },
   ]);
-  console.log(inputs);
-  repeatFunction();
+  profileData.push(inputs)
+  console.log(profileData);
+  repeatFunction(profileData);
 };
 
 const internInq = async function () {
@@ -78,8 +82,9 @@ const internInq = async function () {
       type: "input",
     },
   ]);
-  console.log(inputs);
-  repeatFunction();
+  profileData.push(inputs)
+  console.log(profileData);
+  repeatFunction(profileData);
 };
 //fs.writeFile('/index.html', htmlContent, (error) =>  err ? console.error(err) : console.log('Commit logged!'))
 
@@ -171,8 +176,6 @@ const mainFunction = async function () {
         choices: ["manager", "engineer", "intern"],
       },
     ]);
-    console.log(response);
-    console.log(response.jobType)
   
     if (response.jobType === "manager") {
       await managerInq();
@@ -187,4 +190,20 @@ const mainFunction = async function () {
   
 mainFunction();
 
+const repeatFunction = async function (profileData) {
+  const repeat = await inquirer.prompt({
+    name: "additionalMem",
+    message: "Add another member?",
+    type: "list",
+    choices: ["Yes", "No"],
+  });
+  console.log(repeat.additionalMem);
+  if (repeat.additionalMem === "Yes") {
+    await mainFunction();
+  } else {
+    console.log("This is the repeat function!")
+    console.log(profileData);
+    htmlPrint();
+  }
+};
 

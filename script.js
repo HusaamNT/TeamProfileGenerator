@@ -38,7 +38,8 @@ const managerInq = async function () {
   ]);
   inputs.role = "m"
   profileData.push(inputs)
-  //console.log(profileData);
+  console.log(profileData);
+  console.log(profileData[0].managerName)
   repeatFunction(profileData);
 };
 
@@ -118,7 +119,7 @@ const internInq = async function () {
 appendProfiles = (profileData) =>{
 for (i = 0; i < profileData.length; i++) {
   if (profileData[i].role === "m") {
-    //console.log("hello Manager!!!");
+    console.log("hello Manager!!!");
     htmlContent += `<div class="member" id='member${i}'>
         <ul>
         <li>Name:${profileData[i].managerName}</li>
@@ -155,21 +156,10 @@ for (i = 0; i < profileData.length; i++) {
         `;
   } else return;
 }
+console.log(htmlContent)
 };
 
-htmlContent += `</div>
-</main>
-</body>
-</html>
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
-`;
 
-htmlPrint = () => {
-  fs.writeFile("./public/index.html", htmlContent, (err) =>
-    err ? console.error(err) : console.log("Commit logged!")
-  );
-};
 
 const mainFunction = async function () {
     //console.log("hello mainF");
@@ -195,7 +185,15 @@ const mainFunction = async function () {
   
 mainFunction();
 
-const repeatFunction = async function () {
+const endBoiler = (htmlContent) => {htmlContent += `</div>
+</main>
+</body>
+</html>
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
+`;
+}
+const repeatFunction = async function (profileData) {
   const repeat = await inquirer.prompt({
     name: "additionalMem",
     message: "Add another member?",
@@ -206,9 +204,17 @@ const repeatFunction = async function () {
   if (repeat.additionalMem === "Yes") {
     await mainFunction();
   } else {
-    console.log("This is the repeat function!")
-    appendProfiles(htmlContent)
+    console.log("This is the end of the app!")
+    console.log(profileData)
+    appendProfiles(profileData)
+    endBoiler()
+
     //htmlPrint();
   }
 };
 
+htmlPrint = () => {
+  fs.writeFile("./public/index.html", htmlContent, (err) =>
+    err ? console.error(err) : console.log("Commit logged!")
+  );
+};

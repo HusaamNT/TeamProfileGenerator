@@ -38,8 +38,8 @@ const managerInq = async function () {
   ]);
   inputs.role = "m"
   profileData.push(inputs)
-  console.log(profileData);
-  console.log(profileData[0].managerName)
+  //console.log(profileData);
+  //console.log(profileData[0].managerName)
   repeatFunction(profileData);
 };
 
@@ -144,7 +144,7 @@ for (i = 0; i < profileData.length; i++) {
         `;
   } else if (profileData[i].role === "i") {
    // console.log("hello Intern!!!");
-    htmlContent += `<div class="member" id='member${team[i].id}'>
+    htmlContent += `<div class="member" id='member${i.id}'>
         <ul>
         <li>Name:${profileData[i].internName}</li>
         <li>Role:Intern</li>
@@ -163,7 +163,7 @@ htmlContent += `</div>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>    
 `;
-console.log(htmlContent)
+//console.log(htmlContent)
 };
 
 
@@ -205,7 +205,6 @@ const repeatFunction = async function (profileData) {
     await mainFunction();
   } else {
     console.log("This is the end of the app!")
-    console.log(profileData)
     appendProfiles(profileData)
     htmlPrint();
   }

@@ -117,39 +117,39 @@ const internInq = async function () {
 
 appendProfiles = (profileData) =>{
 for (i = 0; i < profileData.length; i++) {
-  if (team[i].role === "m") {
+  if (profileData[i].role === "m") {
     //console.log("hello Manager!!!");
-    htmlContent += `<div class="member" id='member${team[i].id}'>
+    htmlContent += `<div class="member" id='member${i}'>
         <ul>
-        <li>Name:${team[i].name}</li>
+        <li>Name:${profileData[i].managerName}</li>
         <li>Role:Manager</li>
-        <li>ID:${team[i].id} </li>
-        <li>Email:${team[i].email}</li>
-        <li>OfficeNumber:${team[i].officeNo} </li>
+        <li>ID:${profileData[i].id} </li>
+        <li>Email:${profileData[i].managerEmail}</li>
+        <li>OfficeNumber:${profileData[i].managerOfficeNo} </li>
         </ul>
         </div>
         `;
-  } else if (team[i].role === "e") {
+  } else if (profileData[i].role === "e") {
    // console.log("hello Engineer");
-    htmlContent += `<div class="member" id='member${team[i].id}'>
+    htmlContent += `<div class="member" id='member${i}'>
         <ul>
-        <li>Name:${team[i].name}</li>
+        <li>Name:${profileData[i].engineerName}</li>
         <li>Role:Engineer</li>
-        <li>ID:${team[i].id} </li>
-        <li>Email:${team[i].email}</li>
-        <li>GitHub:${team[i].github} </li>
+        <li>ID:${profileData[i].id} </li>
+        <li>Email:${profileData[i].engineerEmail}</li>
+        <li>GitHub:${profileData[i].engineerGitHub} </li>
         </ul>
         </div>
         `;
-  } else if (team[i].role === "i") {
+  } else if (profileData[i].role === "i") {
    // console.log("hello Intern!!!");
     htmlContent += `<div class="member" id='member${team[i].id}'>
         <ul>
-        <li>Name:${team[i].name}</li>
+        <li>Name:${profileData[i].internName}</li>
         <li>Role:Intern</li>
-        <li>ID:${team[i].id} </li>
-        <li>Email:${team[i].email}</li>
-        <li>School:${team[i].school} </li>
+        <li>ID:${profileData[i].id} </li>
+        <li>Email:${profileData[i].internEmail}</li>
+        <li>School:${profileData[i].internSchool} </li>
         </ul>
         </div>
         `;
@@ -195,7 +195,7 @@ const mainFunction = async function () {
   
 mainFunction();
 
-const repeatFunction = async function (profileData) {
+const repeatFunction = async function () {
   const repeat = await inquirer.prompt({
     name: "additionalMem",
     message: "Add another member?",
@@ -207,8 +207,8 @@ const repeatFunction = async function (profileData) {
     await mainFunction();
   } else {
     console.log("This is the repeat function!")
-    console.log(profileData);
-    htmlPrint();
+    appendProfiles(htmlContent)
+    //htmlPrint();
   }
 };
 
